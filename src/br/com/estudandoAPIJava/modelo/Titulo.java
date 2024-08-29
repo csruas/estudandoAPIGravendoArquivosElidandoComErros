@@ -1,6 +1,6 @@
 package br.com.estudandoAPIJava.modelo;
 
-import br.com.estudandoAPIJava.execao.ErrorDeConversaoDeAnoException;
+import br.com.estudandoAPIJava.execao.ErroDeConversaoDeAnoException;
 
 public class Titulo implements Comparable<Titulo> {
 	private String nome;
@@ -15,12 +15,12 @@ public class Titulo implements Comparable<Titulo> {
         this.anoDeLancamento = anoDeLancamento;
     }
 
-    public Titulo(TituloOmdb meuTituloOmdb) throws ErrorDeConversaoDeAnoException {
+    public Titulo(TituloOmdb meuTituloOmdb) throws ErroDeConversaoDeAnoException {
 		
     	this.nome = meuTituloOmdb.title();
     	
     	if(meuTituloOmdb.year().length() > 4) {
-    		throw new ErrorDeConversaoDeAnoException("Não conseguit converter o ano, por que ele tem  mais de 4 caracteres");
+    		throw new ErroDeConversaoDeAnoException("Não conseguit converter o ano, por que ele tem  mais de 4 caracteres");
     	}
     	this.anoDeLancamento = Integer.valueOf(meuTituloOmdb.year());
     	this.duracaoEmMinutos = Integer.valueOf(meuTituloOmdb.runtime().substring(0,2));
